@@ -6,10 +6,8 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>service</artifactId>
-  <packaging>pom</packaging>
   
- 
-  <dependencies>
+    <dependencies>
   	<dependency>
   		<groupId>com.filipapp</groupId>
   		<artifactId>core</artifactId>
