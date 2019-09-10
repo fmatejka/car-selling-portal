@@ -1,9 +1,14 @@
+package com.carsell.demo;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity
-public class Role {
-	
+import org.springframework.stereotype.Component;
+
+@Component
+public class Manufacturer {
+
 	@Id
 	private int id;
 	private String name;
@@ -21,9 +26,8 @@ public class Role {
 	}
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", name=" + name + "]";
+		return "Manufacturer [id=" + id + ", name=" + name + "]";
 	}
 	
 	
-
 }

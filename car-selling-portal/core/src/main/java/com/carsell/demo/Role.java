@@ -1,9 +1,11 @@
+package com.carsell.demo;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Manufacturer {
-
+public class Role {
+	
 	@Id
 	private int id;
 	private String name;
@@ -21,8 +23,9 @@ public class Manufacturer {
 	}
 	@Override
 	public String toString() {
-		return "Manufacturer [id=" + id + ", name=" + name + "]";
+		return "Role [id=" + id + ", name=" + name + "]";
 	}
 	
 	
+
 }
