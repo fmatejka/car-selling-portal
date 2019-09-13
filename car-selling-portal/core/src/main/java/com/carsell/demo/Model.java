@@ -2,8 +2,10 @@ package com.carsell.demo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="model")
 public class Model {
 	
 	@Id

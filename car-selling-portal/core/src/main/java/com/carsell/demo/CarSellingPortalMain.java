@@ -2,18 +2,26 @@ package com.carsell.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class CarSellingPortalMain{
 
 	public static void main(String[] args) {
 
-		ConfigurableApplicationContext context = SpringApplication.run(CarSellingPortalMain.class,args);
+		SpringApplication.run(CarSellingPortalMain.class,args);
 		
-		Manufacturer m = context.getBean(Manufacturer.class);
+		System.out.println("hello...");
 		
-		m.toString();
+		User u = new User();
+		
+		u.setId(1);
+		u.setUsername("fmatejka019");
+		u.setPassword("mypassword");
+		u.setFirst_name("Filip");
+		u.setLast_name("Matejevic");
+		u.setManufacturer_id(101);
+		
+		System.out.println(u.toString());
 		
 	}
 

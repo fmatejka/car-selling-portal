@@ -34,8 +34,6 @@ public class Comment {
 		return "Comment [id=" + id + ", text=" + text + ", car_id=" + car_id + "]";
 	}
 	
-	
-	
-	
+
 
 }
