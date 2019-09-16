@@ -6,6 +6,26 @@ import javax.persistence.Id;
 @Entity
 public class Car {
 	
+	public Car(int id, String first_registration, String mileage, String fuel, String location, String contact,
+			String cubic_capacity, String gearbox, String additional_accessories, String description, int model_id,
+			int manufacturer_id) {
+		super();
+		this.id = id;
+		this.first_registration = first_registration;
+		this.mileage = mileage;
+		this.fuel = fuel;
+		this.location = location;
+		this.contact = contact;
+		this.cubic_capacity = cubic_capacity;
+		this.gearbox = gearbox;
+		this.additional_accessories = additional_accessories;
+		this.description = description;
+		this.model_id = model_id;
+		this.manufacturer_id = manufacturer_id;
+	}
+	public Car() {
+		// TODO Auto-generated constructor stub
+	}
 	@Id
 	private int id;
 	private String first_registration;
