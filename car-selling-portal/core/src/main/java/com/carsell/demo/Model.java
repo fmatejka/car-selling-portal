@@ -1,7 +1,11 @@
 package com.carsell.demo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -9,9 +13,17 @@ import javax.persistence.Table;
 public class Model {
 	
 	@Id
+	@Column(name = "id")
 	private int id;
+
+	@Column(name = "name")
 	private String name;
-	private int manufacturer_id;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn
+	private Manufacturer manufacturer;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -24,15 +36,10 @@ public class Model {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getManufacturer_id() {
-		return manufacturer_id;
-	}
-	public void setManufacturer_id(int manufacturer_id) {
-		this.manufacturer_id = manufacturer_id;
-	}
+	
 	@Override
 	public String toString() {
-		return "Model [id=" + id + ", name=" + name + ", manufacturer_id=" + manufacturer_id + "]";
+		return "Model [id=" + id + ", name=" + name +"]";
 	}
 	
 	

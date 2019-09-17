@@ -28,6 +28,8 @@ public class UserController {
 	@Autowired
 	private ManufacturerRepository manufacturerRepository;
 	
+	@Autowired
+	private ModelRepository modelRepository;
 
 	
 	@GetMapping("/getUsers")
@@ -70,7 +72,7 @@ public class UserController {
 	    Car car = carRepository.findById(id)
 	      .orElseThrow(() -> new IllegalArgumentException("Invalid car Id:" + id));
 	    carRepository.delete(car);
-	    return "successfuly deleted";
+	    return "successfully deleted";
 	}
 	
 	@PutMapping("/updateCar/{id}")
@@ -117,9 +119,18 @@ public class UserController {
 	@GetMapping("/manufacturers/deleteManufacturer/{id}")
 	public String deleteManufacturer(@PathVariable("id") int id) {
 		Manufacturer m = manufacturerRepository.findById(id)
-	      .orElseThrow(() -> new IllegalArgumentException("Invalid car Id:" + id));
+	      .orElseThrow(() -> new IllegalArgumentException("Invalid manufacturer Id:" + id));
 		manufacturerRepository.delete(m);
-	    return "successfuly deleted";
+	    return "successfully deleted";
+	}
+	
+	@GetMapping("/manufacturers/{id}/showModels")
+	public List<Model> showModels(@PathVariable int id) {
+		
+		Manufacturer m = manufacturerRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid manufacturer Id:" + id));;
+		return  m.getModels();
+		
 	}
 	
 	
