@@ -1,7 +1,10 @@
 package com.carsell.demo;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,6 +14,9 @@ public class Role {
 	@Id
 	private int id;
 	private String name;
+	
+	
+	
 	public int getId() {
 		return id;
 	}

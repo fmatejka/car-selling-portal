@@ -1,10 +1,29 @@
 package com.carsell.demo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Car {
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String first_registration;
+	private String mileage;
+	private String fuel;
+	private String location;
+	private String contact;
+	private String cubic_capacity;
+	private String gearbox;
+	private String additional_accessories;
+	private String description;
+	private int model_id;
+	private int manufacturer_id;
+	//nema polja price ?
 	
 	public Car(int id, String first_registration, String mileage, String fuel, String location, String contact,
 			String cubic_capacity, String gearbox, String additional_accessories, String description, int model_id,
@@ -26,20 +45,6 @@ public class Car {
 	public Car() {
 		// TODO Auto-generated constructor stub
 	}
-	@Id
-	private int id;
-	private String first_registration;
-	private String mileage;
-	private String fuel;
-	private String location;
-	private String contact;
-	private String cubic_capacity;
-	private String gearbox;
-	private String additional_accessories;
-	private String description;
-	private int model_id;
-	private int manufacturer_id;
-	
 	public int getId() {
 		return id;
 	}

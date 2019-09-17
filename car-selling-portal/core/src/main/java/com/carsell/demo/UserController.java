@@ -5,6 +5,8 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/user")
@@ -28,15 +31,15 @@ public class UserController {
 	@Autowired
 	private ManufacturerRepository manufacturerRepository;
 	
-	@Autowired
-	private ModelRepository modelRepository;
 
+	
 	
 	@GetMapping("/getUsers")
 	public List<User> getUsers() {
 		
 		return (List<User>) userRepository.findAll();
 	}
+	
 	
 	@PutMapping("/updateUser/{id}")
 	public ResponseEntity<Object> updateUser(@RequestBody User u, @PathVariable int id) {
@@ -56,7 +59,8 @@ public class UserController {
 	public List<Car> getCars() {
 		
 		return (List<Car>) carRepository.findAll();
-		}
+	}
+	
 	
 	
 	@PostMapping("/addCar")
@@ -65,7 +69,7 @@ public class UserController {
 		carRepository.save(car);
 		System.out.println(car.toString());
 		return "Car added";
-		}
+	}
 	
 	@GetMapping("/deleteCar/{id}")
 	public String deleteCar(@PathVariable("id") int id) {
@@ -133,6 +137,11 @@ public class UserController {
 		
 	}
 	
+	@GetMapping("/getCarsSortedByMileage")
+	public List<Car> getCarsSorted(){
+		
+		return (List<Car>) carRepository.findAll(Sort.by("mileage"));
+	}
 	
 	
 	

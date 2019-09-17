@@ -1,7 +1,14 @@
 package com.carsell.demo;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -9,6 +16,7 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String username;
 	private String password;
@@ -16,6 +24,7 @@ public class User {
 	private String last_name;
 	private int manufacturer_id;
 	
+
 	
 	public int getId() {
 		return id;
