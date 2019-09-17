@@ -53,6 +53,29 @@ public class UserController {
 		return ResponseEntity.noContent().build();
 	}
 	
+	//zelim da uid (ako je admin), menja podatke za id (ako nije admin)
+	@PutMapping("{uid}/updateUser/{id}")
+	public ResponseEntity<Object> updateUser(@RequestBody User u, @PathVariable int uid,@PathVariable int id) {
+
+		User user = userRepository.findById(uid)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid User Id:" + uid));;
+			
+		for(Role r : user.getRoles())
+			if(r.getId() == 1 ) {
+				
+				System.out.println(r.toString() + "JESTE ADMIN");
+				Optional<User> us = userRepository.findById(id);
+
+				if (!us.isPresent())
+					return ResponseEntity.notFound().build();
+				u.setId(id);
+				userRepository.save(u);
+				return ResponseEntity.noContent().build();
+			}
+			else System.out.println(r.toString() + "nije admin");
+		return null;
+	}
+	
 	
 	
 	@GetMapping("/getCars")
@@ -143,7 +166,12 @@ public class UserController {
 		return (List<Car>) carRepository.findAll(Sort.by("mileage"));
 	}
 	
-	
+	/* @GetMapping("/findAllAdmins")
+	public List<Integer> findAllAdmins(){
+		
+		return userRepository.findAllAdmins();	
+		
+	}  */
 	
 	
 }

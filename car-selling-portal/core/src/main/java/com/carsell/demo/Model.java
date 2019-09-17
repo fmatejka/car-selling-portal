@@ -24,6 +24,13 @@ public class Model {
 	private Manufacturer manufacturer;
 	
 	
+	/* public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	*/
 	public int getId() {
 		return id;
 	}

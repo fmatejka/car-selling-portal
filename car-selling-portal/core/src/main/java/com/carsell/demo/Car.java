@@ -1,9 +1,15 @@
 package com.carsell.demo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Car {
@@ -21,27 +27,34 @@ public class Car {
 	private String gearbox;
 	private String additional_accessories;
 	private String description;
-	private int model_id;
-	private int manufacturer_id;
+	//private int model_id;
+	//private int manufacturer_id;
 	//nema polja price ?
 	
-	public Car(int id, String first_registration, String mileage, String fuel, String location, String contact,
-			String cubic_capacity, String gearbox, String additional_accessories, String description, int model_id,
-			int manufacturer_id) {
-		super();
-		this.id = id;
-		this.first_registration = first_registration;
-		this.mileage = mileage;
-		this.fuel = fuel;
-		this.location = location;
-		this.contact = contact;
-		this.cubic_capacity = cubic_capacity;
-		this.gearbox = gearbox;
-		this.additional_accessories = additional_accessories;
-		this.description = description;
-		this.model_id = model_id;
-		this.manufacturer_id = manufacturer_id;
+	
+	@OneToMany(mappedBy = "car")
+	private List<Comment> comments;
+	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn
+	private Manufacturer manufacturer;
+	
+	
+	public Manufacturer getManufacturer() {
+		return manufacturer;
 	}
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	
 	public Car() {
 		// TODO Auto-generated constructor stub
 	}
@@ -105,24 +118,19 @@ public class Car {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getModel_id() {
-		return model_id;
-	}
-	public void setModel_id(int model_id) {
-		this.model_id = model_id;
-	}
-	public int getManufacturer_id() {
+	
+	/*public int getManufacturer_id() {
 		return manufacturer_id;
 	}
 	public void setManufacturer_id(int manufacturer_id) {
 		this.manufacturer_id = manufacturer_id;
-	}
+	} */
 	@Override
 	public String toString() {
 		return "Car [id=" + id + ", first_registration=" + first_registration + ", mileage=" + mileage + ", fuel="
 				+ fuel + ", location=" + location + ", contact=" + contact + ", cubic_capacity=" + cubic_capacity
 				+ ", gearbox=" + gearbox + ", additional_accessories=" + additional_accessories + ", description="
-				+ description + ", model_id=" + model_id + ", manufacturer_id=" + manufacturer_id + "]";
+				+ description + ", model_id=" + ", manufacturer_id=" + "]";
 	}
 	
 	

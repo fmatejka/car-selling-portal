@@ -3,12 +3,14 @@ package com.carsell.demo;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +24,38 @@ public class User {
 	private String password;
 	private String first_name;
 	private String last_name;
-	private int manufacturer_id;
+	//private int manufacturer_id;
+	
+	@ManyToMany
+	@JoinTable(
+			  name = "user_role", 
+			  joinColumns = @JoinColumn (name = "user_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "role_id"))
+	Set<Role> roles;
+	
 	
 
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	} 
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn
+	private Manufacturer manufacturer;
+	
+	
+	
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
 	
 	public int getId() {
 		return id;
@@ -56,16 +87,11 @@ public class User {
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
-	public int getManufacturer_id() {
-		return manufacturer_id;
-	}
-	public void setManufacturer_id(int manufacturer_id) {
-		this.manufacturer_id = manufacturer_id;
-	}
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", first_name=" + first_name
-				+ ", last_name=" + last_name + ", manufacturer_id=" + manufacturer_id + "]";
+				+ ", last_name=" + last_name + ", manufacturer_id="+ "]";
 	}
 	
 	

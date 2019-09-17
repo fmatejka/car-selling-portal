@@ -1,7 +1,10 @@
 package com.carsell.demo;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Comment {
@@ -9,7 +12,13 @@ public class Comment {
 	@Id
 	private int id;
 	private String text;
-	private int car_id;
+
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn
+	private Car car;
+	
+	
 	
 	public int getId() {
 		return id;
@@ -23,15 +32,11 @@ public class Comment {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public int getCar_id() {
-		return car_id;
+	public Car getCar() {
+		return car;
 	}
-	public void setCar_id(int car_id) {
-		this.car_id = car_id;
-	}
-	@Override
-	public String toString() {
-		return "Comment [id=" + id + ", text=" + text + ", car_id=" + car_id + "]";
+	public void setCar(Car car) {
+		this.car = car;
 	}
 	
 

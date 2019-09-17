@@ -28,12 +28,27 @@ public class Manufacturer {
 	@OneToMany(mappedBy = "manufacturer")
 	private List<Model> models;
 	
-	public List<Model> getUsers() {
-		return models;
+	@OneToMany(mappedBy = "manufacturer")
+	private List<User> users;
+	
+	@OneToMany(mappedBy = "manufacturer")
+	private List<Car> cars;
+	
+	
+	/* public List<User> getUsers() {
+		return users;
 	}
-	public void setUsers(List<Model> models) {
-		this.models = models;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
+	*/
+	
+	/* public List<Car> getCars() {
+		return cars;
+	}
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}*/
 	public int getId() {
 		return id;
 	}

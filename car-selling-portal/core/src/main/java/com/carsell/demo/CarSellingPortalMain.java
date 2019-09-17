@@ -19,7 +19,7 @@ public class CarSellingPortalMain{
 		u.setPassword("mypassword");
 		u.setFirst_name("Filip");
 		u.setLast_name("Matejevic");
-		u.setManufacturer_id(101);
+		
 		
 		System.out.println(u.toString());
 		

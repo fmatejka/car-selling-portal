@@ -16,6 +16,18 @@ public class Role {
 	private String name;
 	
 	
+	@ManyToMany(mappedBy = "roles")
+    Set<User> users;
+	
+	//Dok nisam uklonio getUsers(), ulazilo u beskonacnu petlju zbog spajanja
+	
+	/* public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	} */
+	
 	
 	public int getId() {
 		return id;
