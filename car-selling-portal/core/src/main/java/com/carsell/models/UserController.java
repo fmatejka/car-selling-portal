@@ -1,4 +1,4 @@
-package com.carsell.demo;
+package com.carsell.models;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.carsell.repositories.CarRepository;
+import com.carsell.repositories.ManufacturerRepository;
+import com.carsell.repositories.UserRepository;
 
 
 @RestController
@@ -156,8 +160,8 @@ public class UserController {
 		
 		Manufacturer m = manufacturerRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid manufacturer Id:" + id));;
-		return  m.getModels();
-		
+		//return  m.getModels();
+		return null;
 	}
 	
 	@GetMapping("/getCarsSortedByMileage")

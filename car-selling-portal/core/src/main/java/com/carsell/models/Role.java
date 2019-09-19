@@ -1,32 +1,43 @@
-package com.carsell.demo;
+package com.carsell.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name="role")
 public class Role {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	
+	 
+	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<User> users;
 	
-	@ManyToMany(mappedBy = "roles")
-    Set<User> users;
 	
-	//Dok nisam uklonio getUsers(), ulazilo u beskonacnu petlju zbog spajanja
 	
-	/* public Set<User> getUsers() {
+	
+	
+	public Set<User> getUsers() {
 		return users;
 	}
 	public void setUsers(Set<User> users) {
 		this.users = users;
-	} */
+	} 
 	
 	
 	public int getId() {

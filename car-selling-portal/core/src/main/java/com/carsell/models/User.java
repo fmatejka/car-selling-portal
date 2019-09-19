@@ -1,4 +1,4 @@
-package com.carsell.demo;
+package com.carsell.models;
 
 import java.util.Set;
 
@@ -13,6 +13,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name="user")
 public class User {
@@ -24,27 +29,26 @@ public class User {
 	private String password;
 	private String first_name;
 	private String last_name;
-	//private int manufacturer_id;
 	
-	@ManyToMany
+	
+	
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			  name = "user_role", 
 			  joinColumns = @JoinColumn (name = "user_id"), 
 			  inverseJoinColumns = @JoinColumn(name = "role_id"))
-	Set<Role> roles;
+	@JsonIgnore
+	private Set<Role> roles;
 	
 	
-
-	public Manufacturer getManufacturer() {
-		return manufacturer;
-	}
-	public void setManufacturer(Manufacturer manufacturer) {
-		this.manufacturer = manufacturer;
-	} 
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Manufacturer manufacturer;
+	
+	
+	
 	
 	
 	
@@ -56,7 +60,13 @@ public class User {
 		this.roles = roles;
 	}
 	
-	
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	} 
+
 	public int getId() {
 		return id;
 	}

@@ -1,7 +1,9 @@
-package com.carsell.demo;
+package com.carsell;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.carsell.models.User;
 
 @SpringBootApplication
 public class CarSellingPortalMain{
