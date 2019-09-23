@@ -36,8 +36,12 @@ public class Car {
 	@Column(name = "additional_accessories")
 	private String additionalAccessories;
 	private String description;
+	private Long price;
 	
 	 
+
+
+
 	@OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
 	private Set<Comment> comments;
 	
@@ -138,6 +142,13 @@ public class Car {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
 	}
 	
 	

@@ -19,8 +19,8 @@ public class CarSellingPortalMain{
 		u.setId(1);
 		u.setUsername("fmatejka019");
 		u.setPassword("mypassword");
-		u.setFirst_name("Filip");
-		u.setLast_name("Matejevic");
+		u.setFirstName("Filip");
+		u.setLastName("Matejevic");
 		
 		
 		System.out.println(u.toString());

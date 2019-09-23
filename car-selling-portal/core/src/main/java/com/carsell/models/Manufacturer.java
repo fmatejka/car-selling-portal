@@ -22,12 +22,12 @@ public class Manufacturer {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	
 	 
-	@OneToMany(mappedBy = "manufacturer",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "manufacturer",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
 	@JsonIgnore
 	private Set<Model> models;
 	

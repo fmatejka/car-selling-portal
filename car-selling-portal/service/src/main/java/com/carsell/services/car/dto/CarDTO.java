@@ -11,6 +11,7 @@ public class CarDTO {
 
 	private Manufacturer manufacturer;
 	private Model model;
+	private Long price;
 	private String firstRegistration;
 	private String mileage;
 	private String fuel;
@@ -66,6 +67,7 @@ public class CarDTO {
 		this.model = c.getModel();
 		this.manufacturer = c.getManufacturer();
 		this.comments = c.getComments();
+		this.price = c.getPrice();
 				
 	}
 
@@ -160,6 +162,16 @@ public class CarDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
+	}
+	
+	
 	
 	
 	
